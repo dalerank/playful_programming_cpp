@@ -1,5 +1,7 @@
 # Перегрузки
 
+<img width="621" height="445" alt="image" src="https://github.com/user-attachments/assets/c44a6f8a-6bc8-4f37-850c-19d45a836ef3" />
+
 ## Оглавление
 
 - [Введение](#введение)
