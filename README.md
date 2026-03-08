@@ -8,10 +8,10 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 ## Chapters
 
-| # | Topic | RU | EN |
-|---|-------|----|----|
-| 1 | Fundamentals | [playfull_programming_chapter_1_fundamentals_ru.md](playfull_programming_chapter_1_fundamentals_ru.md) | [playfull_programming_chapter_1_fundamentals_en.md](playfull_programming_chapter_1_fundamentals_en.md) |
-| 2 | Overloads | [playfull_programming_chapter_2_overloads_ru.md](playfull_programming_chapter_2_overloads_ru.md) | [playfull_programming_chapter_2_overloads_en.md](playfull_programming_chapter_2_overloads_en.md) |
+| # | Topic | EN |
+|---|-------|----|
+| 1 | Fundamentals | [playfull_programming_chapter_1_fundamentals_en.md](playfull_programming_chapter_1_fundamentals_en.md) |
+| 2 | Overloads | [playfull_programming_chapter_2_overloads_en.md](playfull_programming_chapter_2_overloads_en.md) |
 
 ---
 
@@ -33,10 +33,10 @@ Topics covered so far: fundamentals (entities, kinds, genera, value types, objec
 
 ## Главы
 
-| № | Тема | RU | EN |
-|---|------|----|----|
-| 1 | Основы | [playfull_programming_chapter_1_fundamentals_ru.md](playfull_programming_chapter_1_fundamentals_ru.md) | [playfull_programming_chapter_1_fundamentals_en.md](playfull_programming_chapter_1_fundamentals_en.md) |
-| 2 | Перегрузки | [playfull_programming_chapter_2_overloads_ru.md](playfull_programming_chapter_2_overloads_ru.md) | [playfull_programming_chapter_2_overloads_en.md](playfull_programming_chapter_2_overloads_en.md) |
+| № | Тема | RU |
+|---|------|----|
+| 1 | Основы | [playfull_programming_chapter_1_fundamentals_ru.md](playfull_programming_chapter_1_fundamentals_ru.md)  |
+| 2 | Перегрузки | [playfull_programming_chapter_2_overloads_ru.md](playfull_programming_chapter_2_overloads_ru.md)  |
 
 ---
 
