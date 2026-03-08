@@ -23,7 +23,7 @@ Topics covered so far: fundamentals (entities, kinds, genera, value types, objec
 
 ---
 
-# Playful Programming на C++ (русская версия)
+# Нескучное программирование на C++ (русская версия)
 
 Подборка статей о C++ — написанных не так, как учат в вузе или подают в учебниках.
 
