@@ -12,6 +12,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 |---|-------|----|
 | 1 | Fundamentals | [playfull_programming_chapter_1_fundamentals_en.md](playfull_programming_chapter_1_fundamentals_en.md) |
 | 2 | Overloads | [playfull_programming_chapter_2_overloads_en.md](playfull_programming_chapter_2_overloads_en.md) |
+| 3 | Requires | [playfull_programming_chapter_3_requires_en.md](playfull_programming_chapter_3_requires_en.md) |
 
 ---
 
@@ -19,11 +20,11 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 These articles are about the *why* behind C++ features, not just the syntax. Starting from algorithms and working toward types — the way the STL authors intended.
 
-Topics covered so far: fundamentals (entities, kinds, genera, value types, object types, procedures, computational basis, regularity), generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires` (upcoming).
+Topics covered so far: fundamentals (entities, kinds, genera, value types, object types, procedures, computational basis, regularity), generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires` (constraints).
 
 ---
 
-# Нескучное программирование на C++ (русская версия)
+# Нескучное программирование на C++
 
 Подборка статей о C++ — написанных не так, как учат в вузе или подают в учебниках.
 
@@ -35,8 +36,9 @@ Topics covered so far: fundamentals (entities, kinds, genera, value types, objec
 
 | № | Тема | RU |
 |---|------|----|
-| 1 | Основы | [playfull_programming_chapter_1_fundamentals_ru.md](playfull_programming_chapter_1_fundamentals_ru.md)  |
-| 2 | Перегрузки | [playfull_programming_chapter_2_overloads_ru.md](playfull_programming_chapter_2_overloads_ru.md)  |
+| 1 | Основы | [playfull_programming_chapter_1_fundamentals_ru.md](playfull_programming_chapter_1_fundamentals_ru.md) |
+| 2 | Перегрузки | [playfull_programming_chapter_2_overloads_ru.md](playfull_programming_chapter_2_overloads_ru.md) |
+| 3 | Ограничения | [playfull_programming_chapter_3_requires_ru.md](playfull_programming_chapter_3_requires_ru.md) |
 
 ---
 
@@ -44,4 +46,4 @@ Topics covered so far: fundamentals (entities, kinds, genera, value types, objec
 
 В статьях разбирается *зачем* нужны возможности C++, а не только синтаксис. От алгоритмов — к типам, как задумывали авторы STL.
 
-Уже затронуто: основы (сущности, виды, роды, типы значений, типы объектов, процедуры, вычислительная база, регулярность), обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни std::filesystem, концепты и `requires` (скоро).
+Уже затронуто: основы (сущности, виды, роды, типы значений, типы объектов, процедуры, вычислительная база, регулярность), обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни std::filesystem, концепты и ограничения `requires`.
