@@ -4,6 +4,8 @@ A collection of articles about C++ — written not the way they teach it at univ
 
 The focus is on ideas first: generic programming, overload design, algorithm thinking. Each chapter is available in both Russian and English.
 
+**New:** [Generalizations (RU/EN)](playfull_programming_chapter_1_generalizations_ru.md) · [Values (RU/EN)](playfull_programming_chapter_1_values_ru.md)
+
 ---
 
 ## Chapters
@@ -121,6 +123,8 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 Подборка статей о C++ — написанных не так, как учат в вузе или подают в учебниках.
 
 Сначала идеи: обобщённое программирование, дизайн перегрузок, алгоритмическое мышление. Каждая глава есть на русском и английском.
+
+**Новое:** [Обобщения (RU/EN)](playfull_programming_chapter_1_generalizations_ru.md) · [Значения (RU/EN)](playfull_programming_chapter_1_values_ru.md)
 
 ---
 
