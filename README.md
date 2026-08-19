@@ -10,7 +10,6 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 | # | Topic | RU | EN |
 |---|-------|----|----|
-| 1 | Generalizations, Values, and Objects | [RU](playfull_programming_chapter_1_fundamentals_ru.md) | [EN](playfull_programming_chapter_1_fundamentals_en.md) |
 | 2 | Overloads | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
 | 3 | Concepts and Constraints | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | History of Concepts | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
@@ -21,15 +20,6 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 ---
 
 ## Chapter Contents
-
-### Chapter 1 — Generalizations, Values, and Objects
-
-- Abstract vs concrete entities: what the compiler actually operates on, and why "int" is closer to philosophy than it looks
-- Kinds and genera: how groups of similar things map to C++ types, and why that matters for generics
-- Value types vs object types: the distinction the STL authors relied on but rarely explained
-- Functions as rules between types; total vs partial functions and their implications for API design
-- Computational basis: the minimal set of operations a type must support for an algorithm to work correctly
-- Regularity: copy, equality, and assignment as the non-negotiable foundation of generic code
 
 ### Chapter 2 — Overloads
 
@@ -102,7 +92,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 These articles are about the *why* behind C++ features, not just the syntax. Starting from algorithms and working toward types — the way the STL authors intended.
 
-Topics covered: fundamentals (entities, kinds, genera, value types, object types, procedures, computational basis, regularity), generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires`, history of concepts in the C++ standard, partial ordering and subsumption, name mangling, name lookup rules (unqualified, qualified, ADL), two-phase lookup, compiler-specific behaviors (GCC, Clang, MSVC).
+Topics covered: generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires`, history of concepts in the C++ standard, partial ordering and subsumption, name mangling, name lookup rules (unqualified, qualified, ADL), two-phase lookup, compiler-specific behaviors (GCC, Clang, MSVC).
 
 ---
 
@@ -118,7 +108,6 @@ Topics covered: fundamentals (entities, kinds, genera, value types, object types
 
 | № | Тема | RU | EN |
 |---|------|----|----|
-| 1 | Обобщения, значения и объекты | [RU](playfull_programming_chapter_1_fundamentals_ru.md) | [EN](playfull_programming_chapter_1_fundamentals_en.md) |
 | 2 | Перегрузки | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
 | 3 | Концепты и ограничения | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | История концептов | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
@@ -129,15 +118,6 @@ Topics covered: fundamentals (entities, kinds, genera, value types, object types
 ---
 
 ## Содержание глав
-
-### Глава 1 — Обобщения, значения и объекты
-
-- Абстрактные и конкретные сущности: что на самом деле обрабатывает компилятор и почему `int` ближе к философии, чем кажется
-- Виды и роды: как группы похожих вещей отображаются на типы C++ и почему это важно для обобщённого кода
-- Типы значений против типов объектов: разница, на которую опирались авторы STL, но редко объясняли явно
-- Функции как правила между типами; тотальные и частичные функции и их влияние на проектирование API
-- Вычислительная база: минимальный набор операций, который тип обязан поддерживать, чтобы алгоритм работал корректно
-- Регулярность: копирование, равенство и присваивание как обязательная основа обобщённого кода
 
 ### Глава 2 — Перегрузки
 
@@ -210,4 +190,4 @@ Topics covered: fundamentals (entities, kinds, genera, value types, object types
 
 В статьях разбирается *зачем* нужны возможности C++, а не только синтаксис. От алгоритмов — к типам, как задумывали авторы STL.
 
-Уже затронуто: основы (сущности, виды, роды, типы значений, типы объектов, процедуры, вычислительная база, регулярность), обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни `std::filesystem`, концепты и ограничения `requires`, история концептов в стандарте C++, частичный порядок и подчинение, манглинг имён, правила поиска имён (неквалифицированный, квалифицированный, ADL), двухфазный поиск, поведение компиляторов (GCC, Clang, MSVC).
+Уже затронуто: обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни `std::filesystem`, концепты и ограничения `requires`, история концептов в стандарте C++, частичный порядок и подчинение, манглинг имён, правила поиска имён (неквалифицированный, квалифицированный, ADL), двухфазный поиск, поведение компиляторов (GCC, Clang, MSVC).
