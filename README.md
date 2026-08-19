@@ -10,6 +10,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 | # | Topic | RU | EN |
 |---|-------|----|----|
+| 1 | Generalizations | [RU](playfull_programming_chapter_1_generalizations_ru.md) | [EN](playfull_programming_chapter_1_generalizations_en.md) |
 | 2 | Overloads | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
 | 3 | Concepts and Constraints | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | History of Concepts | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
@@ -20,6 +21,15 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 ---
 
 ## Chapter Contents
+
+### Chapter 1 — Generalizations
+
+- Kind vs genus: the `Weapon` hierarchy trap and why «shooting» is a property, not a type
+- Abstract and concrete entities; attributes, identity, and the Ship of Theseus in code
+- Kinds and genera; inventory example (medkit, ammo, grenade) and templates as rules over kinds
+- `total_weight` and writing code for everything that obeys a rule, not for one concrete type
+- Types in C++ as kinds; how the compiler, LLVM IR, and MSVC PDB see them differently
+- Concepts (`C++20`) and modules: constraint checking and vendor-specific type serialization
 
 ### Chapter 2 — Overloads
 
@@ -92,7 +102,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 These articles are about the *why* behind C++ features, not just the syntax. Starting from algorithms and working toward types — the way the STL authors intended.
 
-Topics covered: generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires`, history of concepts in the C++ standard, partial ordering and subsumption, name mangling, name lookup rules (unqualified, qualified, ADL), two-phase lookup, compiler-specific behaviors (GCC, Clang, MSVC).
+Topics covered: kinds and genera, entities and generalization, generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires`, history of concepts in the C++ standard, partial ordering and subsumption, name mangling, name lookup rules (unqualified, qualified, ADL), two-phase lookup, compiler-specific behaviors (GCC, Clang, MSVC).
 
 ---
 
@@ -108,6 +118,7 @@ Topics covered: generic programming, overload sets, interface design, std::files
 
 | № | Тема | RU | EN |
 |---|------|----|----|
+| 1 | Обобщения | [RU](playfull_programming_chapter_1_generalizations_ru.md) | [EN](playfull_programming_chapter_1_generalizations_en.md) |
 | 2 | Перегрузки | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
 | 3 | Концепты и ограничения | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | История концептов | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
@@ -118,6 +129,15 @@ Topics covered: generic programming, overload sets, interface design, std::files
 ---
 
 ## Содержание глав
+
+### Глава 1 — Обобщения
+
+- Вид и род: ловушка иерархии `Weapon` и почему «стреляет» это свойство, а не тип
+- Абстрактные и конкретные сущности; атрибуты, идентичность и корабль Тесея в коде
+- Виды и роды; инвентарь (аптечка, патрон, граната) и шаблоны как правила над видами
+- `total_weight` и код для всего, что подчиняется правилу, а не для одной конкретной сущности
+- Типы в C++ как виды; как их по-разному видят компилятор, LLVM IR и PDB у MSVC
+- Концепты (`C++20`) и модули: проверка ограничений и сериализация типов у каждого вендора
 
 ### Глава 2 — Перегрузки
 
@@ -190,4 +210,4 @@ Topics covered: generic programming, overload sets, interface design, std::files
 
 В статьях разбирается *зачем* нужны возможности C++, а не только синтаксис. От алгоритмов — к типам, как задумывали авторы STL.
 
-Уже затронуто: обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни `std::filesystem`, концепты и ограничения `requires`, история концептов в стандарте C++, частичный порядок и подчинение, манглинг имён, правила поиска имён (неквалифицированный, квалифицированный, ADL), двухфазный поиск, поведение компиляторов (GCC, Clang, MSVC).
+Уже затронуто: виды и роды, сущности и обобщение, обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни `std::filesystem`, концепты и ограничения `requires`, история концептов в стандарте C++, частичный порядок и подчинение, манглинг имён, правила поиска имён (неквалифицированный, квалифицированный, ADL), двухфазный поиск, поведение компиляторов (GCC, Clang, MSVC).
