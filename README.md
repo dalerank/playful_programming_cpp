@@ -4,7 +4,7 @@ A collection of articles about C++ — written not the way they teach it at univ
 
 The focus is on ideas first: generic programming, overload design, algorithm thinking. Each chapter is available in both Russian and English.
 
-**New:** [Objects (RU/EN)](playfull_programming_chapter_1-3_objects_ru.md)
+**New:** [Procedures (RU/EN)](playfull_programming_chapter_1-4_procedures_ru.md)
 
 ---
 
@@ -15,6 +15,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 | 1.1 | Generalizations | [RU](playfull_programming_chapter_1-1_generalizations_ru.md) | [EN](playfull_programming_chapter_1-1_generalizations_en.md) |
 | 1.2 | Values | [RU](playfull_programming_chapter_1-2_values_ru.md) | [EN](playfull_programming_chapter_1-2_values_en.md) |
 | 1.3 | Objects | [RU](playfull_programming_chapter_1-3_objects_ru.md) | [EN](playfull_programming_chapter_1-3_objects_en.md) |
+| 1.4 | Procedures | [RU](playfull_programming_chapter_1-4_procedures_ru.md) | [EN](playfull_programming_chapter_1-4_procedures_en.md) |
 | 2 | Overloads | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
 | 3 | Concepts and Constraints | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | History of Concepts | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
@@ -49,12 +50,24 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 - A tower pointer that still "works" after the unit died: "where it lives" vs "who it is"
 - An object as a contract between programmer, compiler, and machine; state as a value that can change
 - Why objects exist: mutable memory under even "pure" computation
-- AoS vs SoA: cache lines, hot fields, and when splitting layout pays
+- AoS vs SoA: cache lines, hot fields, napkin math, and measured timings when splitting layout pays
 - Object type vs value type; unique representations and why `memcmp` fails on padding
 - Lifetime: object starts after initialization and ends when the destructor starts; pools reuse addresses
 - Identity tokens separate from state; equality vs identity; Ship of Theseus
 - COW strings, cfront, and how optimizers treat objects under as-if
 - Addresses that do not survive reallocation; generation counters in ECS; pointers for "where", tokens for "who"
+
+### Chapter 1.4 — Procedures
+
+- A tooltip that shows another unit's name scraps: returning `const char*` to a stack buffer
+- Stack frames belong to the call, not the function; leaf functions, red zone, and why debug "worked"
+- How many frames fit: measuring frame size, 1 MB stacks, worker threads, fibers; recursion vs heap stack
+- Calling conventions: registers vs stack, cdecl vs stdcall, who pops the arguments
+- Prologue, epilogue, `enter`/`leave`, and slot reuse inside one frame
+- Inline and LTO erase call machinery; what remains is the contract of who reads and writes which objects
+- Where state lives: arguments, locals, globals, and `static` hidden state that survives a new match
+- Pure in / pure out / in-out; aliasing, `restrict`, and why the compiler fears your pointer
+- Three rules: return by value not by address, encode roles in the signature, pass context explicitly
 
 ### Chapter 2 — Overloads
 
@@ -127,7 +140,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 These articles are about the *why* behind C++ features, not just the syntax. Starting from algorithms and working toward types — the way the STL authors intended.
 
-Topics covered: kinds and genera, entities and generalization, value types and equality, objects and identity, generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires`, history of concepts in the C++ standard, partial ordering and subsumption, name mangling, name lookup rules (unqualified, qualified, ADL), two-phase lookup, compiler-specific behaviors (GCC, Clang, MSVC).
+Topics covered: kinds and genera, entities and generalization, value types and equality, objects and identity, procedures and calling conventions, stack frames and argument roles, generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires`, history of concepts in the C++ standard, partial ordering and subsumption, name mangling, name lookup rules (unqualified, qualified, ADL), two-phase lookup, compiler-specific behaviors (GCC, Clang, MSVC).
 
 ---
 
@@ -137,7 +150,7 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 
 Сначала идеи: обобщённое программирование, дизайн перегрузок, алгоритмическое мышление. Каждая глава есть на русском и английском.
 
-**Новое:** [Объекты (RU/EN)](playfull_programming_chapter_1-3_objects_ru.md)
+**Новое:** [Процедуры (RU/EN)](playfull_programming_chapter_1-4_procedures_ru.md)
 
 ---
 
@@ -148,6 +161,7 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 | 1.1 | Обобщения | [RU](playfull_programming_chapter_1-1_generalizations_ru.md) | [EN](playfull_programming_chapter_1-1_generalizations_en.md) |
 | 1.2 | Значения | [RU](playfull_programming_chapter_1-2_values_ru.md) | [EN](playfull_programming_chapter_1-2_values_en.md) |
 | 1.3 | Объекты | [RU](playfull_programming_chapter_1-3_objects_ru.md) | [EN](playfull_programming_chapter_1-3_objects_en.md) |
+| 1.4 | Процедуры | [RU](playfull_programming_chapter_1-4_procedures_ru.md) | [EN](playfull_programming_chapter_1-4_procedures_en.md) |
 | 2 | Перегрузки | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
 | 3 | Концепты и ограничения | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | История концептов | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
@@ -182,12 +196,24 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 - Указатель башни, который «работает» после смерти юнита: «где лежит» против «кто это»
 - Объект как договор программиста, компилятора и машины; состояние как значение, которое может меняться
 - Зачем объекты: изменяемая память даже под «чистым» вычислением
-- AoS против SoA: кэш-линии, горячие поля и когда разнесённая раскладка окупается
+- AoS против SoA: кэш-линии, горячие поля, салфеточный расчёт и замеры, когда разнесённая раскладка окупается
 - Тип объекта и тип значения; уникальные представления и почему `memcmp` ломается на дырах
 - Время жизни: объект начинается после инициализации и кончается с деструктором; пулы переиспользуют адреса
 - Токены идентичности отдельно от состояния; равенство против тождественности; корабль Тесея
 - COW-строки, cfront и как оптимизатор видит объекты под as-if
 - Адреса, которые не переживают реаллокацию; поколения в ECS; указатели для «где», токены для «кто»
+
+### Глава 1.4 — Процедуры
+
+- Подсказка с обрывками чужого имени: возврат `const char*` на стековый буфер
+- Кадр принадлежит вызову, а не функции; leaf-функции, красная зона и почему в отладке «работало»
+- Сколько кадров влезает: замер размера кадра, стек 1 МБ, воркеры, файберы; рекурсия против стека в куче
+- Соглашения о вызовах: регистры против стека, cdecl против stdcall, кто снимает аргументы
+- Пролог, эпилог, `enter`/`leave` и переиспользование слотов внутри одного кадра
+- Инлайн и LTO обнуляют механику вызова; остаётся договор о том, кто что читает и пишет
+- Где живёт состояние: аргументы, локальные, глобальные и скрытый `static`, который переживает новый матч
+- Чистый вход / чистый выход / вход-выход; aliasing, `restrict` и почему компилятор боится указателя
+- Три правила: наружу значением, не адресом; роли в сигнатуре; контекст передавать явно
 
 ### Глава 2 — Перегрузки
 
@@ -260,4 +286,4 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 
 В статьях разбирается *зачем* нужны возможности C++, а не только синтаксис. От алгоритмов — к типам, как задумывали авторы STL.
 
-Уже затронуто: виды и роды, сущности и обобщение, типы значений и равенство, объекты и идентичность, обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни `std::filesystem`, концепты и ограничения `requires`, история концептов в стандарте C++, частичный порядок и подчинение, манглинг имён, правила поиска имён (неквалифицированный, квалифицированный, ADL), двухфазный поиск, поведение компиляторов (GCC, Clang, MSVC).
+Уже затронуто: виды и роды, сущности и обобщение, типы значений и равенство, объекты и идентичность, процедуры и соглашения о вызовах, стековые кадры и роли аргументов, обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни `std::filesystem`, концепты и ограничения `requires`, история концептов в стандарте C++, частичный порядок и подчинение, манглинг имён, правила поиска имён (неквалифицированный, квалифицированный, ADL), двухфазный поиск, поведение компиляторов (GCC, Clang, MSVC).
