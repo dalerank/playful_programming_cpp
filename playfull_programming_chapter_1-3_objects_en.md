@@ -327,6 +327,43 @@ The addresses could not have matched here, because the new buffer is allocated b
 
 In modern game systems the identity token is increasingly an explicitly introduced value independent of the address, and in popular ECS architectures each entity gets a numeric identifier at creation, and it stays unchanged no matter how components move in memory, and this is usually not a flat counter but the familiar pair from the values chapter of a slot index and a generation number, because the slots themselves are reused and without a generation the new occupant of a slot would be indistinguishable from the previous one. In databases primary keys play the same role, and in distributed systems people often take a UUID/GUID (a typical random UUID needs no central registrar, though not all identifier schemes support that). The common idea is one: the token should be a stable value that survives moves and data reorganization and that you can safely store and compare without fear that reallocation, relocation, or a change of physical address will make the reference meaningless.
 
+```text
+===================================================================
+HANDLE / TOKEN: SOLVING THE ABA PROBLEM VIA GENERATIONS
+===================================================================
+
+Token structure (32-bit Handle):
+┌───────────────────────────────┬───────────────────────────────┐
+│     generation (16 bits)      │       slot_index (16 bits)    │
+└───────────────────────────────┴───────────────────────────────┘
+ Example: { gen: 1, slot: 2 }   ──> points to slot 2, generation 1
+
+Entity Pool:
+  Slot 0: [ gen: 1 | Monster A ]
+  Slot 1: [ gen: 1 | Monster B ]
+  Slot 2: [ gen: 1 | Monster C ]  ◄── Tower holds token { gen: 1, slot: 2 }
+
+ABA Scenario (Monster C dies, Monster D spawns in the same slot):
+
+ 1. Monster C is killed:
+    Slot 2 is freed, slot generation counter increments:
+    Slot 2: [ gen: 2 | ─── FREE ─── ]
+
+ 2. New Monster D spawns on the other side of the map:
+    Slot 2 is reused for Monster D with the new generation:
+    Slot 2: [ gen: 2 | Monster D ]  ──> New token: { gen: 2, slot: 2 }
+
+ 3. Tower tries to shoot using old token { gen: 1, slot: 2 }:
+    Validity check:
+      token.slot_index ──► Slot 2
+      token.generation (1) == slot.generation (2) ? ──► FALSE (INVALID!)
+
+    Result:
+      The tower detects that monster C is dead, clears its target,
+      and does not shoot monster D across the map, even though
+      the memory slot is identical.
+```
+
 The practical rule for us comes out like this. A raw pointer, reference, or index is an excellent way to say "where", but they only work inside one system state while you yourself guarantee that nobody spawns, dies, or reshuffles the array. As soon as a reference must survive a frame, land in an event queue, a save, or another thread, it has to turn into a token that answers "who", be it an id with a generation, a primary key, or a handle with a check. The tower from the opening of the chapter, had it held such a token, would simply have failed to find its current target and taken the next one, instead of diligently shooting at the old "address".
 
 The distinction between "where it lives" and "who it is" runs through the middle of this whole construction, and from it grow dangling pointers, generations in ECS, and the whole further conversation about ownership and lifetime.

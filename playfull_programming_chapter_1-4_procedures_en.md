@@ -59,7 +59,73 @@ The buffer `buf` sat in `unit_label`'s frame, the frame ended on `ret`, and the 
 
 Once another call landed in that region of memory, it laid its own locals on the same spot, and since the next call was most often the same `unit_label` for a neighboring unit, scraps of someone else's name crawled out of the tooltip. Formally this is undefined behavior, and arguing about what "will happen" is not worth it, because there are no guarantees here, including the guarantee that it will not crash the game at all.
 
+```text
+===================================================================
+STACK FRAME REUSE AND DANGLING STACK POINTERS
+===================================================================
+
+Step 1: Calling unit_label(Unit{"Archer", 5})
+  RSP shifted down, local buffer initialized in the frame:
+
+  Stack memory (address 0x7FFF00):
+  ┌─────────────────────────────────────────────────────────────┐
+  │ "Archer [5]\0"                                              │  <── buf[64]
+  └─────────────────────────────────────────────────────────────┘
+  ▲
+  │ returned pointer ptr = 0x7FFF00
+
+Step 2: Returning from unit_label (RET instruction)
+  Frame ends, RSP moves back up, memory is NOT zeroed:
+
+  Stack memory (RSP moved above):
+  [ 0x7FFF00: "Archer [5]\0" ]  <── Memory is considered free,
+  ▲                                 but stale bytes remain
+  │ ptr (dangling pointer!) still points to 0x7FFF00
+
+Step 3: Next call to render_tooltip() or unit_label(Unit{"Mage", 12})
+  The new call lays its own stack frame over the exact same address:
+
+  Stack memory (0x7FFF00 overwritten by new call):
+  ┌─────────────────────────────────────────────────────────────┐
+  │ "Mage [12]\0"                                               │
+  └─────────────────────────────────────────────────────────────┘
+  ▲
+  │ Old ptr reads 0x7FFF00:
+  │ Instead of "Archer [5]", tooltip reads parts of "Mage [12]" or garbage!
+```
+
 The "call creates a frame" model is a good starting point, but today it is more of an approximation, because a leaf function often has enough registers and the red zone (on System V AMD64 that is 128 bytes below the stack pointer that you may use without moving the pointer itself), and compilers throw away the frame pointer at any optimization level and address locals straight from the stack pointer. The most radical case, when there is no frame at all because there is no call either, we will unpack separately.
+
+```text
+===================================================================
+RED ZONE IN SYSTEM V AMD64 (LINUX / macOS x64)
+===================================================================
+
+Stack grows downward (toward lower addresses):
+
+  Address:
+    ▲
+    │  ┌────────────────────────────────────────────────────────┐
+    │  │ Caller Stack Frame                                     │
+    │  ├────────────────────────────────────────────────────────┤
+    │  │ Return Address (RIP)                                   │
+    │  └────────────────────────────────────────────────────────┘
+    │  ◄── Current Stack Pointer (RSP)
+    │
+    │  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+    │  │ RED ZONE (128 bytes below RSP):                        │
+    │  │                                                        │
+    │  │  • Leaf functions use these 128 bytes for locals       │
+    │  │    without modifying RSP (saving 'sub/add rsp, N')     │
+    │  │                                                        │
+    │  │  • OS interrupts and signal handlers are guaranteed    │
+    │  │    not to touch this space (allocating below RSP-128)  │
+    │  │                                                        │
+    │  │  • NOTE: If the function calls another function (CALL),│
+    │  │    the Red Zone cannot be used                         │
+    │  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+    ▼  ◄── RSP - 128 (boundary of protected zone)
+```
 
 ## How many frames fit on the stack
 

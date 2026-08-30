@@ -104,7 +104,29 @@ To handle these cases carefully, distinguish two kinds of equality: equality as 
 
 If a type has unique representation, equality by meaning automatically implies equality by bits, because each entity has only one legal representation. If a type is not ambiguous, that is, each bit sequence corresponds to at most one entity, then representational equality implies equality by meaning: same bits, same entity.
 
-So for ordinary two's-complement `int`, operator `==` essentially coincides with comparing representations: same meaning means same bits and vice versa. For `double` the picture differs: machine comparison (`==` per IEEE 754) is neither pure bit comparison nor pure mathematical equality: `+0.0 == -0.0` is `true` with different bits, and `NaN == NaN` is `false` even when bit patterns match. The compiler still lowers this to one or two instructions, but they follow floating-point rules and do not look like "memcmp over eight bytes".
+So for ordinary two's-complement `int`, operator `==` essentially coincides with comparing representations: same meaning means same bits and vice versa. For `double` and `float` the picture differs: machine comparison (`==` per IEEE 754) is neither pure bit comparison nor pure mathematical equality: `+0.0 == -0.0` is `true` with different bits, and `NaN == NaN` is `false` even when bit patterns match. The compiler still lowers this to one or two instructions, but they follow floating-point rules and do not look like "memcmp over bytes".
+
+```text
+32-bit float bit layout (IEEE 754):
+
+  31 30         23 22                                      0
+ ┌──┬─────────────┬─────────────────────────────────────────┐
+ │s │  exponent   │                fraction                 │
+ │  │   (8 bits)  │                (23 bits)                │
+ └──┴─────────────┴─────────────────────────────────────────┘
+  1 bit
+
+ 1. Comparing +0.0f and -0.0f:
+    +0.0f: 0 [00000000] [00000000000000000000000]  (sign bit = 0)
+    -0.0f: 1 [00000000] [00000000000000000000000]  (sign bit = 1)
+    Bit patterns are DIFFERENT (memcmp returns false),
+    but IEEE 754 specifies that operation (+0.0f == -0.0f) returns true.
+
+ 2. Comparing NaN (Not-a-Number):
+    NaN:   x [11111111] [non-zero fraction...   ]
+    Bit patterns can be IDENTICAL (memcmp returns true),
+    but IEEE 754 specifies that any comparison with NaN returns false (NaN == NaN yields false).
+```
 
 But in real life we often use types where uniqueness is deliberately broken for efficiency of creating and converting values. Rationals stored as numerator/denominator pairs without automatic reduction are the classic example: 1/2 and 2/4 are the same abstract entity but different representational forms, and checking equality by meaning requires reducing both fractions or cross-multiplying, much costlier than comparing two bit patterns.
 

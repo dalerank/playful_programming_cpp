@@ -4,6 +4,36 @@ Imagine for a moment that behind the odd keywords and linker errors, `C++` is ye
 
 If you have ever built weapons in a game, you may recognize this example: first comes a base class `Weapon`, because a weapon is a kind of item, then an automatic rifle, a shotgun, and a sniper rifle inherit from it, which looks logical and even elegant. Then designers bring a shield that takes the same slot as the rifle but does not shoot, then a grenade that fires once and disappears, then a sapper shovel that does not shoot at all but can dig, and it too takes a weapon slot. And it turns out that "shooting" is not a kind at all but one property among many, that is, a genus, and it never fit the hierarchy from the start. By then half the subsystems depend on `Weapon`, the rework costs weeks, and the mistake was made in the first half hour of work, when a kind was confused with a genus.
 
+```text
+False inheritance hierarchy (OOP):
+
+             ┌──────────────┐
+             │    Weapon    │  (base class: shoot(), reload(), ammo)
+             └──────┬───────┘
+       ┌────────────┼────────────┬────────────┐
+       ▼            ▼            ▼            ▼
+  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐
+  │  Rifle  │  │ Shotgun │  │ Shield  │  │ Shovel  │
+  │ shoot() │  │ shoot() │  │ ???     │  │ dig()   │
+  └─────────┘  └─────────┘  └─────────┘  └─────────┘
+                            (cannot shoot,(cannot shoot,
+                             in weapon    can dig)
+                             slot)
+
+Intersecting genera (properties and capabilities):
+
+  ┌────────────────────────────────────────────────────────┐
+  │ Genus "Fits in weapon slot":                           │
+  │   Rifle, Shotgun, Shield, Shovel, Grenade              │
+  ├────────────────────────────┬───────────────────────────┤
+  │ Genus "Shoots":            │ Genus "Blocks damage":    │
+  │   Rifle, Shotgun           │   Shield                  │
+  ├────────────────────────────┼───────────────────────────┤
+  │ Genus "Digs":              │ Genus "Single-use":       │
+  │   Shovel                   │   Grenade                 │
+  └────────────────────────────┴───────────────────────────┘
+```
+
 When you try to explain what objects and types are, you have to go beyond technical language and speak of categories humanity worked with long before any programming languages existed. Words like "entity", "kind", and "genus" show up inevitably. Let us agree right away: this is our working vocabulary for one chapter; outside it nobody uses this terminology, and in books on `C++` the same things are called types, values, and concepts, and I will use those words later too, but to see where these notions come from it is easier to start with concepts that came from... surprise, philosophy.
 
 ### Entities, attributes, and kinds

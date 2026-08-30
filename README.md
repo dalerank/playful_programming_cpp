@@ -23,6 +23,10 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 | 6 | Constraints Revisited | [RU](playfull_programming_chapter_6_again_requires_ru.md) | [EN](playfull_programming_chapter_6_again_requires_en.md) |
 | 7 | Name Lookup in C++ | [RU](playfull_programming_chapter_7_names_lookup_ru.md) | [EN](playfull_programming_chapter_7_names_lookup_en.md) |
 
+### Examples (C++)
+
+Runnable snippets from chapters 1.1–1.4 live under [`examples/`](examples/README.md) (RU and EN folders). Build with `/std:c++20` or `-std=c++20`.
+
 ---
 
 ## Chapter Contents
@@ -168,6 +172,10 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 | 5 | Иерархия концептов | [RU](playfull_programming_chapter_5_hierarhy_ru.md) | [EN](playfull_programming_chapter_5_hierarhy_en.md) |
 | 6 | И снова ограничения | [RU](playfull_programming_chapter_6_again_requires_ru.md) | [EN](playfull_programming_chapter_6_again_requires_en.md) |
 | 7 | Поиск имён в C++ | [RU](playfull_programming_chapter_7_names_lookup_ru.md) | [EN](playfull_programming_chapter_7_names_lookup_en.md) |
+
+### Примеры (C++)
+
+Сниппеты из глав 1.1–1.4 лежат в [`examples/`](examples/README.md) (папки RU и EN). Сборка: `/std:c++20` или `-std=c++20`.
 
 ---
 
