@@ -105,3 +105,21 @@ C++ snippets extracted from published chapters. Build with /std:c++20 (MSVC) or 
 - [07_popcount_naive.cpp](chapter_1-5_computational_basis_ru/07_popcount_naive.cpp): from playfull_programming_chapter_1-5_computational_basis_ru.md
 - [08_dot_scalar.cpp](chapter_1-5_computational_basis_ru/08_dot_scalar.cpp): from playfull_programming_chapter_1-5_computational_basis_ru.md
 - [09_Fixed.cpp](chapter_1-5_computational_basis_ru/09_Fixed.cpp): from playfull_programming_chapter_1-5_computational_basis_ru.md
+
+## [chapter_1-6_regularity_en](chapter_1-6_regularity_en/)
+
+- [00_Enemy.cpp](chapter_1-6_regularity_en/00_Enemy.cpp): from playfull_programming_chapter_1-6_regularity_en.md
+- [01_Loot.cpp](chapter_1-6_regularity_en/01_Loot.cpp): from playfull_programming_chapter_1-6_regularity_en.md
+- [02_Fixed.cpp](chapter_1-6_regularity_en/02_Fixed.cpp): from playfull_programming_chapter_1-6_regularity_en.md
+- [03_Fixed.cpp](chapter_1-6_regularity_en/03_Fixed.cpp): from playfull_programming_chapter_1-6_regularity_en.md
+- [04_has_eq.cpp](chapter_1-6_regularity_en/04_has_eq.cpp): from playfull_programming_chapter_1-6_regularity_en.md
+- [05_Loot.cpp](chapter_1-6_regularity_en/05_Loot.cpp): from playfull_programming_chapter_1-6_regularity_en.md
+
+## [chapter_1-6_regularity_ru](chapter_1-6_regularity_ru/)
+
+- [00_Enemy.cpp](chapter_1-6_regularity_ru/00_Enemy.cpp): from playfull_programming_chapter_1-6_regularity_ru.md
+- [01_Loot.cpp](chapter_1-6_regularity_ru/01_Loot.cpp): from playfull_programming_chapter_1-6_regularity_ru.md
+- [02_Fixed.cpp](chapter_1-6_regularity_ru/02_Fixed.cpp): from playfull_programming_chapter_1-6_regularity_ru.md
+- [03_Fixed.cpp](chapter_1-6_regularity_ru/03_Fixed.cpp): from playfull_programming_chapter_1-6_regularity_ru.md
+- [04_has_eq.cpp](chapter_1-6_regularity_ru/04_has_eq.cpp): from playfull_programming_chapter_1-6_regularity_ru.md
+- [05_Loot.cpp](chapter_1-6_regularity_ru/05_Loot.cpp): from playfull_programming_chapter_1-6_regularity_ru.md

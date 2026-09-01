@@ -4,7 +4,7 @@ A collection of articles about C++ written not the way they teach it at universi
 
 The focus is on ideas first: generic programming, overload design, algorithm thinking. Each chapter is available in both Russian and English.
 
-**New:** [Computational Basis (RU/EN)](playfull_programming_chapter_1-5_computational_basis_ru.md)
+**New:** [Regularity (RU/EN)](playfull_programming_chapter_1-6_regularity_ru.md)
 
 ---
 
@@ -17,6 +17,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 | 1.3 | Objects | [RU](playfull_programming_chapter_1-3_objects_ru.md) | [EN](playfull_programming_chapter_1-3_objects_en.md) |
 | 1.4 | Procedures | [RU](playfull_programming_chapter_1-4_procedures_ru.md) | [EN](playfull_programming_chapter_1-4_procedures_en.md) |
 | 1.5 | Computational Basis | [RU](playfull_programming_chapter_1-5_computational_basis_ru.md) | [EN](playfull_programming_chapter_1-5_computational_basis_en.md) |
+| 1.6 | Regularity | [RU](playfull_programming_chapter_1-6_regularity_ru.md) | [EN](playfull_programming_chapter_1-6_regularity_en.md) |
 | 2 | Overloads | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
 | 3 | Concepts and Constraints | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | History of Concepts | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
@@ -26,7 +27,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 ### Examples (C++)
 
-Runnable snippets from chapters 1.1-1.5 live under [`examples/`](examples/README.md) (RU and EN folders). Build with `/std:c++20` or `-std=c++20`.
+Runnable snippets from chapters 1.1-1.6 live under [`examples/`](examples/README.md) (RU and EN folders). Build with `/std:c++20` or `-std=c++20`.
 
 ---
 
@@ -82,6 +83,18 @@ Runnable snippets from chapters 1.1-1.5 live under [`examples/`](examples/README
 - Eighty years of hardware bases: from ENIAC and Baby through x86, RISC, SIMD, CRC32C, AVX, VNNI
 - Autovectorization vs handwritten intrinsics; when "in silicon" is still slower than SWAR
 - Fixing `Fixed` with integer division; choosing primitives so wrappers inherit a cheap foundation
+
+### Chapter 1.6. Regularity
+
+- Replay desync from sorting enemies by pointer address, not by damage
+- Regular types: copy, assign, compare, default construct, and independent copies
+- Ada generics and Stepanov's regular type; from STL to `std::regular` in C++20
+- Regular functions vs correct functions: `midpoint_naive`, overflow, and `std::midpoint`
+- What equality costs: early exit, `memcmp`, and multiset equality at O(n log n)
+- When equality is too expensive: identity vs value, `Enemy` with `Loot`, and `has_eq`
+- Structural `<=>` vs semantic order; why `std::sort` needs a strict weak ordering
+- Fixing `Enemy`: value members, no pointer keys, and the same fold on two machines
+- Practical rules: value-only equality, strict comparators, and address-independent traversal
 
 ### Chapter 2. Overloads
 
@@ -154,7 +167,7 @@ Runnable snippets from chapters 1.1-1.5 live under [`examples/`](examples/README
 
 These articles are about the *why* behind C++ features, not just the syntax. Starting from algorithms and working toward types, the way the STL authors intended.
 
-Topics covered: kinds and genera, entities and generalization, value types and equality, objects and identity, procedures and calling conventions, stack frames and argument roles, computational basis and choosing primitives for custom types, generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires`, history of concepts in the C++ standard, partial ordering and subsumption, name mangling, name lookup rules (unqualified, qualified, ADL), two-phase lookup, compiler-specific behaviors (GCC, Clang, MSVC).
+Topics covered: kinds and genera, entities and generalization, value types and equality, objects and identity, procedures and calling conventions, stack frames and argument roles, computational basis and choosing primitives for custom types, regular types and functions, equality cost and comparators, generic programming, overload sets, interface design, std::filesystem pitfalls, concepts and `requires`, history of concepts in the C++ standard, partial ordering and subsumption, name mangling, name lookup rules (unqualified, qualified, ADL), two-phase lookup, compiler-specific behaviors (GCC, Clang, MSVC).
 
 ---
 
@@ -164,7 +177,7 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 
 Сначала идеи: обобщённое программирование, дизайн перегрузок, алгоритмическое мышление. Каждая глава есть на русском и английском.
 
-**Новое:** [Вычислительная база (RU/EN)](playfull_programming_chapter_1-5_computational_basis_ru.md)
+**Новое:** [Регулярность (RU/EN)](playfull_programming_chapter_1-6_regularity_ru.md)
 
 ---
 
@@ -177,6 +190,7 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 | 1.3 | Объекты | [RU](playfull_programming_chapter_1-3_objects_ru.md) | [EN](playfull_programming_chapter_1-3_objects_en.md) |
 | 1.4 | Процедуры | [RU](playfull_programming_chapter_1-4_procedures_ru.md) | [EN](playfull_programming_chapter_1-4_procedures_en.md) |
 | 1.5 | Вычислительная база | [RU](playfull_programming_chapter_1-5_computational_basis_ru.md) | [EN](playfull_programming_chapter_1-5_computational_basis_en.md) |
+| 1.6 | Регулярность | [RU](playfull_programming_chapter_1-6_regularity_ru.md) | [EN](playfull_programming_chapter_1-6_regularity_en.md) |
 | 2 | Перегрузки | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
 | 3 | Концепты и ограничения | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | История концептов | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
@@ -186,7 +200,7 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 
 ### Примеры (C++)
 
-Сниппеты из глав 1.1-1.5 лежат в [`examples/`](examples/README.md) (папки RU и EN). Сборка: `/std:c++20` или `-std=c++20`.
+Сниппеты из глав 1.1-1.6 лежат в [`examples/`](examples/README.md) (папки RU и EN). Сборка: `/std:c++20` или `-std=c++20`.
 
 ---
 
@@ -242,6 +256,18 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 - Восемьдесят лет железных баз: от ENIAC и Baby через x86, RISC, SIMD, CRC32C, AVX, VNNI
 - Автовекторизация против рукописных интринсиков; когда «в кремнии» всё ещё медленнее SWAR
 - Починка `Fixed` целочисленным делением; выбор примитивов, чтобы обёртки наследовали дешёвое основание
+
+### Глава 1.6. Регулярность
+
+- Десинк реплея из-за сортировки врагов по адресу указателя, а не по урону
+- Регулярный тип: копия, присваивание, сравнение, конструктор по умолчанию и независимые копии
+- Генерики Ada и регулярный тип Степанова; от STL до `std::regular` в C++20
+- Регулярная функция и правильная функция: `midpoint_naive`, переполнение и `std::midpoint`
+- Цена равенства: ранний выход, `memcmp` и равенство мультимножеств за O(n log n)
+- Когда равенство слишком дорого: идентичность против значения, `Enemy` с `Loot` и `has_eq`
+- Структурный `<=>` против смыслового порядка; зачем `std::sort` ждёт строгое слабое упорядочивание
+- Починка `Enemy`: поля-значения, без ключей-указателей и та же свёртка на двух машинах
+- Практические правила: равенство только по значению, строгий компаратор и обход без адресов
 
 ### Глава 2. Перегрузки
 
@@ -314,4 +340,4 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 
 В статьях разбирается *зачем* нужны возможности C++, а не только синтаксис. От алгоритмов к типам, как задумывали авторы STL.
 
-Уже затронуто: виды и роды, сущности и обобщение, типы значений и равенство, объекты и идентичность, процедуры и соглашения о вызовах, стековые кадры и роли аргументов, вычислительная база и выбор примитивов для своих типов, обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни `std::filesystem`, концепты и ограничения `requires`, история концептов в стандарте C++, частичный порядок и подчинение, манглинг имён, правила поиска имён (неквалифицированный, квалифицированный, ADL), двухфазный поиск, поведение компиляторов (GCC, Clang, MSVC).
+Уже затронуто: виды и роды, сущности и обобщение, типы значений и равенство, объекты и идентичность, процедуры и соглашения о вызовах, стековые кадры и роли аргументов, вычислительная база и выбор примитивов для своих типов, регулярные типы и функции, цена равенства и компараторы, обобщённое программирование, перегрузки, дизайн интерфейсов, подводные камни `std::filesystem`, концепты и ограничения `requires`, история концептов в стандарте C++, частичный порядок и подчинение, манглинг имён, правила поиска имён (неквалифицированный, квалифицированный, ADL), двухфазный поиск, поведение компиляторов (GCC, Clang, MSVC).
