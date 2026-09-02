@@ -4,7 +4,7 @@ A collection of articles about C++ written not the way they teach it at universi
 
 The focus is on ideas first: generic programming, overload design, algorithm thinking. Each chapter is available in both Russian and English.
 
-**New:** [Regularity (RU/EN)](playfull_programming_chapter_1-6_regularity_ru.md)
+**New:** [Overloads (RU/EN)](playfull_programming_chapter_2-1_overloads_ru.md)
 
 ---
 
@@ -18,7 +18,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 | 1.4 | Procedures | [RU](playfull_programming_chapter_1-4_procedures_ru.md) | [EN](playfull_programming_chapter_1-4_procedures_en.md) |
 | 1.5 | Computational Basis | [RU](playfull_programming_chapter_1-5_computational_basis_ru.md) | [EN](playfull_programming_chapter_1-5_computational_basis_en.md) |
 | 1.6 | Regularity | [RU](playfull_programming_chapter_1-6_regularity_ru.md) | [EN](playfull_programming_chapter_1-6_regularity_en.md) |
-| 2 | Overloads | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
+| 2.1 | Overloads | [RU](playfull_programming_chapter_2-1_overloads_ru.md) | [EN](playfull_programming_chapter_2-1_overloads_en.md) |
 | 3 | Concepts and Constraints | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | History of Concepts | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
 | 5 | Concept Hierarchy | [RU](playfull_programming_chapter_5_hierarhy_ru.md) | [EN](playfull_programming_chapter_5_hierarhy_en.md) |
@@ -27,7 +27,7 @@ The focus is on ideas first: generic programming, overload design, algorithm thi
 
 ### Examples (C++)
 
-Runnable snippets from chapters 1.1-1.6 live under [`examples/`](examples/README.md) (RU and EN folders). Build with `/std:c++20` or `-std=c++20`.
+Runnable snippets from chapters 1.1-1.6, 2.1 live under [`examples/`](examples/README.md) (RU and EN folders). Build with `/std:c++20` or `-std=c++20`.
 
 ---
 
@@ -96,14 +96,16 @@ Runnable snippets from chapters 1.1-1.6 live under [`examples/`](examples/README
 - Fixing `Enemy`: value members, no pointer keys, and the same fold on two machines
 - Practical rules: value-only equality, strict comparators, and address-independent traversal
 
-### Chapter 2. Overloads
+### Chapter 2.1. Overloads
 
-- Algorithm-first thinking: why you should define the algorithm before picking types, not the other way around
-- Overload sets as universal interfaces: one name, many types, zero ambiguity when done right
-- Good overloads: semantic consistency, non-overlapping domains, and the rule of least surprise
-- Bad overloads: implicit conversion traps, ambiguity that hides bugs until runtime
-- `std::filesystem` case study: naming pitfalls in a real standard library API and what they teach us
-- How overload design scales to generic code without reaching for templates immediately
+- `pow_naive` on `Fixed` 16.16: why generic templates fail when types hide arithmetic assumptions
+- Algorithm first, types second: reading requirements line-by-line instead of fitting code to classes
+- Syntactic vs semantic fit: physical units (`Accel`, `Speed`, `Seconds`) and strong types vs naked floats
+- Why textbook `add(int)`, `add(double)`, `add(string)` misses the point of generic programming
+- Pingala (200 BC), Dijkstra (1976), Gries (1981), Stepanov (2009): history of exponentiation by squaring
+- Associativity, neutral element (`T{1}` vs matrix identity / `Fixed`), and avoiding dead squaring overflow
+- `pow_fast_careful`: reordering squaring to protect custom types from UB and domain overflows
+- How operator overloads and templates bind abstract algorithms to concrete types
 
 ### Chapter 3. Concepts and Constraints
 
@@ -177,7 +179,7 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 
 Сначала идеи: обобщённое программирование, дизайн перегрузок, алгоритмическое мышление. Каждая глава есть на русском и английском.
 
-**Новое:** [Регулярность (RU/EN)](playfull_programming_chapter_1-6_regularity_ru.md)
+**Новое:** [Перегрузки (RU/EN)](playfull_programming_chapter_2-1_overloads_ru.md)
 
 ---
 
@@ -191,7 +193,7 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 | 1.4 | Процедуры | [RU](playfull_programming_chapter_1-4_procedures_ru.md) | [EN](playfull_programming_chapter_1-4_procedures_en.md) |
 | 1.5 | Вычислительная база | [RU](playfull_programming_chapter_1-5_computational_basis_ru.md) | [EN](playfull_programming_chapter_1-5_computational_basis_en.md) |
 | 1.6 | Регулярность | [RU](playfull_programming_chapter_1-6_regularity_ru.md) | [EN](playfull_programming_chapter_1-6_regularity_en.md) |
-| 2 | Перегрузки | [RU](playfull_programming_chapter_2_overloads_ru.md) | [EN](playfull_programming_chapter_2_overloads_en.md) |
+| 2.1 | Перегрузки | [RU](playfull_programming_chapter_2-1_overloads_ru.md) | [EN](playfull_programming_chapter_2-1_overloads_en.md) |
 | 3 | Концепты и ограничения | [RU](playfull_programming_chapter_3_requires_ru.md) | [EN](playfull_programming_chapter_3_requires_en.md) |
 | 4 | История концептов | [RU](playfull_programming_chapter_4_history_ru.md) | [EN](playfull_programming_chapter_4_history_en.md) |
 | 5 | Иерархия концептов | [RU](playfull_programming_chapter_5_hierarhy_ru.md) | [EN](playfull_programming_chapter_5_hierarhy_en.md) |
@@ -200,7 +202,7 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 
 ### Примеры (C++)
 
-Сниппеты из глав 1.1-1.6 лежат в [`examples/`](examples/README.md) (папки RU и EN). Сборка: `/std:c++20` или `-std=c++20`.
+Сниппеты из глав 1.1-1.6, 2.1 лежат в [`examples/`](examples/README.md) (папки RU и EN). Сборка: `/std:c++20` или `-std=c++20`.
 
 ---
 
@@ -269,14 +271,16 @@ Topics covered: kinds and genera, entities and generalization, value types and e
 - Починка `Enemy`: поля-значения, без ключей-указателей и та же свёртка на двух машинах
 - Практические правила: равенство только по значению, строгий компаратор и обход без адресов
 
-### Глава 2. Перегрузки
+### Глава 2.1. Перегрузки
 
-- Алгоритм первее типа: почему нужно сначала определить алгоритм, а уже потом выбирать типы
-- Множество перегрузок как универсальный интерфейс: одно имя, много типов, никакой неоднозначности, если всё сделано правильно
-- Хорошие перегрузки: семантическая согласованность, непересекающиеся области применимости, принцип наименьшего удивления
-- Плохие перегрузки: ловушки неявного преобразования, неоднозначность, которая скрывает баги до рантайма
-- Разбор `std::filesystem`: ошибки именования в реальном API стандартной библиотеки и что они нам говорят
-- Как правильно спроектированные перегрузки масштабируются на обобщённый код без немедленного введения шаблонов
+- `pow_naive` на `Fixed` 16.16: почему обобщённый шаблон ломается на скрытых предположениях о типе
+- Сначала алгоритм, потом типы: выписывание требований построчно вместо натягивания алгоритма на классы
+- Синтаксическая и семантическая пригодность: строгие физические типы (`Accel`, `Speed`, `Seconds`) против `float`
+- Почему учебниковый `add(int)`, `add(double)`, `add(string)` не учит обобщённому программированию
+- Пингала (200 до н.э.), Дейкстра (1976), Грис (1981), Степанов (2009): история возведения в степень через квадрат
+- Ассоциативность, нейтральный элемент (`T{1}` против единичной матрицы и `Fixed`) и лишний квадрат
+- `pow_fast_careful`: перестановка вычислений для защиты пользовательских типов от переполнения и UB
+- Как перегрузка операторов вместе с шаблонами связывает абстрактный алгоритм с конкретными типами
 
 ### Глава 3. Концепты и ограничения
 

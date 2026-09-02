@@ -123,3 +123,25 @@ C++ snippets extracted from published chapters. Build with /std:c++20 (MSVC) or 
 - [03_Fixed.cpp](chapter_1-6_regularity_ru/03_Fixed.cpp): from playfull_programming_chapter_1-6_regularity_ru.md
 - [04_has_eq.cpp](chapter_1-6_regularity_ru/04_has_eq.cpp): from playfull_programming_chapter_1-6_regularity_ru.md
 - [05_Loot.cpp](chapter_1-6_regularity_ru/05_Loot.cpp): from playfull_programming_chapter_1-6_regularity_ru.md
+
+## [chapter_2-1_overloads_en](chapter_2-1_overloads_en/)
+
+- [00_Fixed.cpp](chapter_2-1_overloads_en/00_Fixed.cpp): from playfull_programming_chapter_2-1_overloads_en.md
+- [01_pow_naive.cpp](chapter_2-1_overloads_en/01_pow_naive.cpp): from playfull_programming_chapter_2-1_overloads_en.md
+- [02_naive_physics.cpp](chapter_2-1_overloads_en/02_naive_physics.cpp): from playfull_programming_chapter_2-1_overloads_en.md
+- [03_Seconds.cpp](chapter_2-1_overloads_en/03_Seconds.cpp): from playfull_programming_chapter_2-1_overloads_en.md
+- [04_add.cpp](chapter_2-1_overloads_en/04_add.cpp): from playfull_programming_chapter_2-1_overloads_en.md
+- [05_pow_fast.cpp](chapter_2-1_overloads_en/05_pow_fast.cpp): from playfull_programming_chapter_2-1_overloads_en.md
+- [06_pow_fast_careful.cpp](chapter_2-1_overloads_en/06_pow_fast_careful.cpp): from playfull_programming_chapter_2-1_overloads_en.md
+- [07_Mat2.cpp](chapter_2-1_overloads_en/07_Mat2.cpp): from playfull_programming_chapter_2-1_overloads_en.md
+
+## [chapter_2-1_overloads_ru](chapter_2-1_overloads_ru/)
+
+- [00_Fixed.cpp](chapter_2-1_overloads_ru/00_Fixed.cpp): from playfull_programming_chapter_2-1_overloads_ru.md
+- [01_pow_naive.cpp](chapter_2-1_overloads_ru/01_pow_naive.cpp): from playfull_programming_chapter_2-1_overloads_ru.md
+- [02_naive_physics.cpp](chapter_2-1_overloads_ru/02_naive_physics.cpp): from playfull_programming_chapter_2-1_overloads_ru.md
+- [03_Seconds.cpp](chapter_2-1_overloads_ru/03_Seconds.cpp): from playfull_programming_chapter_2-1_overloads_ru.md
+- [04_add.cpp](chapter_2-1_overloads_ru/04_add.cpp): from playfull_programming_chapter_2-1_overloads_ru.md
+- [05_pow_fast.cpp](chapter_2-1_overloads_ru/05_pow_fast.cpp): from playfull_programming_chapter_2-1_overloads_ru.md
+- [06_pow_fast_careful.cpp](chapter_2-1_overloads_ru/06_pow_fast_careful.cpp): from playfull_programming_chapter_2-1_overloads_ru.md
+- [07_Mat2.cpp](chapter_2-1_overloads_ru/07_Mat2.cpp): from playfull_programming_chapter_2-1_overloads_ru.md
